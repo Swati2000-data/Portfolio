@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swati S Rajput — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-secondary: #f7f6f3;
+    --text-primary: #1a1a1a;
+    --text-secondary: #8e8686;
+    --text-tertiary: #682020;
+    --border: rgba(0,0,0,0.1);
+    --border-strong: rgba(0,0,0,0.18);
+    --accent: #1a1a1a;
+    --tag-bg: #f0efec;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'DM Sans', sans-serif;
+    --toggle-bg: #e8e7e4;
+    --toggle-thumb: #fff;
+    --toggle-icon: #6b6b6b;
+  }
+  [data-theme="dark"] {
+    --bg: #111110;
+    --bg-secondary: #1c1c1a;
+    --text-primary: #f0ede8;
+    --text-secondary: #9a9790;
+    --text-tertiary: #5e5c57;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(255,255,255,0.15);
+    --accent: #f0ede8;
+    --tag-bg: #252420;
+    --toggle-bg: #2e2d2a;
+    --toggle-thumb: #1a1a18;
+    --toggle-icon: #9a9790;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    transition: background 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+  }
+
+  /* Layout */
+  .container { max-width: 720px; margin: 0 auto; padding: 0 2rem; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--bg);
+    border-bottom: 0.5px solid var(--border);
+    padding: 1.1rem 0;
+    transition: background 0.3s ease;
+  }
+  .nav-inner { display: flex; justify-content: space-between; align-items: center; }
+  .nav-name { font-family: var(--serif); font-size: 17px; letter-spacing: -0.3px; color: var(--text-primary); }
+  .nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-links { display: flex; gap: 1.4rem; }
+  .nav-links a { font-size: 13px; color: var(--text-secondary); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text-primary); }
+
+  /* Dark mode toggle */
+  .toggle-btn {
+    width: 42px; height: 24px;
+    border-radius: 99px;
+    background: var(--toggle-bg);
+    border: 0.5px solid var(--border-strong);
+    cursor: pointer;
+    position: relative;
+    display: flex; align-items: center;
+    padding: 0 3px;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+  }
+  .toggle-thumb {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 0.5px solid var(--border-strong);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.25s ease, background 0.3s ease;
+    font-size: 10px;
+    color: var(--toggle-icon);
+  }
+  [data-theme="dark"] .toggle-thumb { transform: translateX(18px); }
+
+  /* Hero */
+  .hero { padding: 4rem 0 3rem; }
+  .hero-eyebrow {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 1.2rem;
+  }
+  .hero-name {
+    font-family: var(--serif); font-size: 56px; line-height: 1.08;
+    letter-spacing: -1.5px; color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+  .hero-name em { font-style: italic; color: var(--text-secondary); }
+  .hero-bio { font-size: 15px; color: var(--text-secondary); line-height: 1.75; max-width: 520px; margin-bottom: 2rem; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    font-family: var(--sans); font-size: 13px; font-weight: 500;
+    padding: 10px 22px; background: var(--text-primary); color: var(--bg);
+    border: none; border-radius: 8px; cursor: pointer; letter-spacing: 0.02em;
+    text-decoration: none; display: inline-block; transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.82; }
+  .btn-secondary {
+    font-family: var(--sans); font-size: 13px; font-weight: 400;
+    padding: 10px 22px; background: transparent; color: var(--text-primary);
+    border: 0.5px solid var(--border-strong); border-radius: 8px; cursor: pointer;
+    text-decoration: none; display: inline-block; transition: background 0.2s;
+  }
+  .btn-secondary:hover { background: var(--bg-secondary); }
+
+  /* Sections */
+  .section { padding: 2.8rem 0; border-top: 0.5px solid var(--border); }
+  .section-label {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--text-tertiary); margin-bottom: 1.8rem;
+  }
+
+  /* Skills */
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+  .skill-card { background: var(--bg-secondary); border-radius: 8px; padding: 14px 16px; transition: background 0.3s; }
+  .skill-cat { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 8px; }
+  .skill-list { font-size: 13px; color: var(--text-secondary); line-height: 2; }
+
+  /* Projects */
+  .project-row {
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: start; gap: 16px;
+    padding: 1.4rem 0; border-bottom: 0.5px solid var(--border);
+  }
+  .project-row:last-child { border-bottom: none; }
+  .project-num { font-family: var(--serif); font-size: 11px; color: var(--text-tertiary); margin-bottom: 4px; }
+  .project-meta { font-size: 11px; color: var(--text-tertiary); margin-bottom: 6px; letter-spacing: 0.04em; }
+  .project-title { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 6px; }
+  .project-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; }
+  .project-insight {
+    font-size: 12px; color: var(--text-secondary);
+    border-left: 2px solid var(--border-strong);
+    padding-left: 10px; margin-top: 10px; font-style: italic;
+  }
+  .project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .tag {
+    font-size: 11px; padding: 3px 10px;
+    border-radius: 99px; border: 0.5px solid var(--border-strong);
+    color: var(--text-secondary); background: var(--tag-bg);
+    transition: background 0.3s;
+  }
+  .project-link { font-size: 18px; color: var(--text-tertiary); padding-top: 4px; }
+  .project-link a { color: inherit; text-decoration: none; transition: color 0.2s; }
+  .project-link a:hover { color: var(--text-primary); }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .about-text { font-size: 15px; color: var(--text-secondary); line-height: 1.8; }
+  .about-stats { display: flex; flex-direction: column; gap: 18px; }
+  .stat { border-left: 2px solid var(--border-strong); padding-left: 16px; }
+  .stat-num { font-family: var(--serif); font-size: 30px; color: var(--text-primary); line-height: 1; }
+  .stat-label { font-size: 12px; color: var(--text-tertiary); margin-top: 3px; }
+
+  /* Contact */
+  .contact-row {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1.5rem; padding: 2.2rem 0;
+  }
+  .contact-heading { font-family: var(--serif); font-size: 30px; color: var(--text-primary); }
+  .contact-links { display: flex; gap: 18px; flex-wrap: wrap; }
+  .contact-link {
+    font-size: 13px; color: var(--text-secondary); text-decoration: none;
+    display: flex; align-items: center; gap: 6px; transition: color 0.2s;
+  }
+  .contact-link:hover { color: var(--text-primary); }
+  .contact-link i { font-size: 16px; }
+
+  /* Footer */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 1.5rem 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+
+  /* Fade-in animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero { animation: fadeUp 0.5s ease both; }
+  .section { animation: fadeUp 0.5s ease both; }
+
+  /* Responsive */
+  @media (max-width: 580px) {
+    .hero-name { font-size: 38px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-row { flex-direction: column; align-items: flex-start; }
+    .nav-links { display: none; }
+    .container { padding: 0 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <span class="nav-name">Swati Rajput</span>
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <button class="toggle-btn" onclick="toggleTheme()" aria-label="Toggle dark mode">
+          <div class="toggle-thumb" id="toggle-icon">
+            <i class="ti ti-sun" id="theme-icon"></i>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- Hero -->
+    <div class="hero">
+      <p class="hero-eyebrow">Data Analyst · Dashboard Designer</p>
+      <h1 class="hero-name">Data that tells<br>a <em>clear story.</em></h1>
+      <p class="hero-bio">Aspiring data analyst with a knack for turning raw, messy datasets into interactive dashboards and actionable business insights. Skilled across the full pipeline — from cleaning and SQL querying to Power BI storytelling.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View projects</a>
+        <a href="https://github.com/Swati2000-data" target="_blank" class="btn-secondary">GitHub <i class="ti ti-arrow-up-right" style="font-size:12px;vertical-align:-1px;"></i></a>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="section" id="skills">
+      <p class="section-label">Skills</p>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <p class="skill-cat">Languages</p>
+          <p class="skill-list">Python<br>SQL</p>
+        </div>
+        <div class="skill-card">
+          <p class="skill-cat">Libraries</p>
+          <p class="skill-list">Pandas<br>NumPy<br>Matplotlib</p>
+        </div>
+        <div class="skill-card">
+          <p class="skill-cat">Databases</p>
+          <p class="skill-list">PostgreSQL<br>MY SQL</p>
+        </div>
+        <div class="skill-card">
+          <p class="skill-cat">Visualisation</p>
+          <p class="skill-list">Power BI<br>Tableau<br>Excel</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Projects -->
+    <div class="section" id="projects">
+      <p class="section-label">Projects</p>
+      <div>
+
+        <div class="project-row">
+          <div>
+            <p class="project-num">01</p>
+            <p class="project-meta">E-Commerce · 2026</p>
+            <p class="project-title">Customer Behavior Analysis Dashboard</p>
+            <p class="project-desc">Collected and cleaned a raw e-commerce dataset using Pandas, then designed and populated a PostgreSQL database connected via psycopg2. Used SQL to segment customers by spend and purchase frequency, and built an interactive Power BI dashboard with bar charts, donut charts, and dropdown slicers.</p>
+            <p class="project-insight">Top 10% of customers contributed over 60% of total revenue — enabling targeted marketing recommendations.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">Power BI</span><span class="tag">psycopg2</span>
+            </div>
+          </div>
+          <div class="project-link"><a href="https://github.com/Swati2000-data" target="_blank"><i class="ti ti-arrow-up-right"></i></a></div>
+        </div>
+
+        <div class="project-row">
+          <div>
+            <p class="project-num">02</p>
+            <p class="project-meta">Marketing · 2026</p>
+            <p class="project-title">Marketing Campaign Analytics Dashboard</p>
+            <p class="project-desc">Preprocessed a marketing dataset in Python — handling outliers, nulls, and feature formatting — then analysed customer revenue patterns, geographic distribution, and campaign reach. Built a Power BI dashboard visualising regional revenue contribution and unique customer acquisition trends to support business decisions.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">EDA</span>
+            </div>
+          </div>
+          <div class="project-link"><a href="https://github.com/Swati2000-data" target="_blank"><i class="ti ti-arrow-up-right"></i></a></div>
+        </div>
+
+        <div class="project-row">
+          <div>
+            <p class="project-num">03</p>
+            <p class="project-meta">Banking · 2026</p>
+            <p class="project-title">Banking Loan & Deposit Analysis Dashboard</p>
+            <p class="project-desc">Performed end-to-end analysis of banking data using Python, covering loan portfolio breakdowns (approval rates, risk categories, outstanding amounts) and deposit trends across customer segments. Translated findings into a Power BI dashboard to surface key patterns for risk assessment and deposit growth strategy.</p>
+            <div class="project-tags">
+              <span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">Finance</span>
+            </div>
+          </div>
+          <div class="project-link"><a href="https://github.com/Swati2000-data" target="_blank"><i class="ti ti-arrow-up-right"></i></a></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="section" id="about">
+      <p class="section-label">About</p>
+      <div class="about-grid">
+        <div>
+          <p class="about-text">I'm an aspiring data analyst passionate about the full analytics pipeline — not just building dashboards, but asking the right questions, cleaning the data properly, and communicating insights in a way that non-technical stakeholders can act on. I'm actively looking for my first full-time data analyst role.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat">
+            <p class="stat-num">3</p>
+            <p class="stat-label">End-to-end projects shipped</p>
+          </div>
+          <div class="stat">
+            <p class="stat-num">3</p>
+            <p class="stat-label">Domains: e-commerce, marketing, banking</p>
+          </div>
+          <div class="stat">
+            <p class="stat-num">Open</p>
+            <p class="stat-label">to full-time data analyst roles</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="section" id="contact">
+      <div class="contact-row">
+        <p class="contact-heading">Let's work together.</p>
+        <div class="contact-links">
+          <a href="rajaputswati97@gmail.com" class="contact-link"><i class="ti ti-mail"></i> Email</a>
+          <a href="https://www.linkedin.com/in/swati-rajput-177a10297" target="_blank" class="contact-link"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/Swati2000-data" target="_blank" class="contact-link"><i class="ti ti-brand-github"></i> GitHub</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Swati Rajput · Built with HTML & CSS</p>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const icon = document.getElementById('theme-icon');
+    if (html.getAttribute('data-theme') === 'light') {
+      html.setAttribute('data-theme', 'dark');
+      icon.className = 'ti ti-moon';
+    } else {
+      html.setAttribute('data-theme', 'light');
+      icon.className = 'ti ti-sun';
+    }
+  }
+</script>
+
+</body>
+</html>
